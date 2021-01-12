@@ -2,6 +2,7 @@ import React from 'react';
 
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
+import Footer from '../components/Footer';
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
       <div className='container mx-auto py-4'>
         <Navbar />
         <Hero />
+        <Footer />
       </div>
     </div>
   );

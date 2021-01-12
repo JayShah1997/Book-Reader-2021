@@ -9,10 +9,10 @@ const Navbar = () => {
         <div class='absolute ml-24 -mt-4 bg-gradient-to-br from-red-200 to-red-200 w-80 h-80 rounded-full opacity-50'></div>
       </div>
 
-      <h1 className='relative  text-3xl font-bold text-blue-500'>
+      <h1 className='relative  text-3xl font-bold text-blue-500 uppercase'>
         <a
           href='/'
-          className='inline-block text-3xl mr-2 font-bold text-gray-700'
+          className='inline-block text-3xl mr-2 font-bold  text-transparent bg-clip-text bg-gradient-to-r from-purple-500  to-green-500'
         >
           <i class='fas fa-book'></i> Book Reader
         </a>
