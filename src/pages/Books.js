@@ -2,7 +2,7 @@ import React from 'react';
 
 const Books = () => {
   return (
-    <div className='relative lg:px-32' style={{ minHeight: '65vh' }}>
+    <div className='relative lg:px-32 ' style={{ minHeight: '65vh' }}>
       <h1 className='text-6xl text-center mt-32  font-bold uppercase text-transparent bg-clip-text bg-gradient-to-r from-purple-500  to-green-500'>
         <i class='fas fa-book'></i> Read Books
       </h1>
@@ -39,7 +39,7 @@ const Books = () => {
             Read Book
           </a>
         </div>
-        <div className='text-center w-1/3 bg-white p-6 rounded shadow-lg pt-16 pb-16  transform  hover:-translate-y-4 hover:shadow-xl transition duration-500 border-t-8  border-green-700'>
+        <div className='text-center w-1/3 bg-white p-6 rounded shadow-lg pt-16 pb-16 px-1  transform  hover:-translate-y-4 hover:shadow-xl transition duration-500 border-t-8  border-green-700'>
           <i class='text-transparent bg-clip-text bg-gradient-to-r from-green-600  to-blue-600  fas fa-globe text-6xl mb-8'></i>
           <h3 className='text-4xl uppercase mb-6 text-gray-900 font-bold tracking-wide'>
             Geography

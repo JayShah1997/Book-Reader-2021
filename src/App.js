@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Books from './pages/Books';
+import NotFound from './components/NotFound';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
             <Switch>
               <Route exact path='/' component={Home} />
               <Route exact path='/books' component={Books} />
+              <Route exact path='*' component={NotFound} />
             </Switch>
           </main>
           <Footer />
