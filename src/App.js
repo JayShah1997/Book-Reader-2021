@@ -1,27 +1,25 @@
-import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import Home from './pages/Home';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Books from './pages/Books';
-import NotFound from './components/NotFound';
+import Home from "./pages/Home";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Books from "./pages/Books";
+import NotFound from "./components/NotFound";
+import English from "./components/books/English";
 
 const App = () => {
   return (
     <Router>
-      <div className='min-h-screen bg-gradient-to-br from-blue-100 to-gray-200'>
-        <div className='container mx-auto py-4'>
+      <div className="min-h-screen bg-gradient-to-br from-blue-100 to-gray-200">
+        <div className="container mx-auto py-4">
           <Navbar />
           <main>
             <Switch>
-              <Route exact path='/' component={Home} />
-              <Route exact path='/books' component={Books} />
-              <Route exact path='*' component={NotFound} />
+              <Route exact path="/" component={Home} />
+              <Route exact path="/books" component={Books} />
+              <Route exact path="/books/english" component={English} />
+              <Route exact path="*" component={NotFound} />
             </Switch>
           </main>
           <Footer />
