@@ -118,7 +118,7 @@ const Geography = () => {
         <span className="">{pages}</span>
       </div>
       <div
-        style={{ height: "793px", width: "595px", margin: "0 auto" }}
+        style={{ height: "730px", width: "595px", margin: "0 auto" }}
         onMouseOver={() => pagePlay()}
         onMouseOut={() => pageStop()}
       >
