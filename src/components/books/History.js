@@ -6,12 +6,35 @@ import historyPdf from "./history-1-10.pdf";
 
 import nextPageAudio from "../../audio/BooksAudio/nextPageAudio.mp3";
 import prevPageAudio from "../../audio/BooksAudio/prevPageAudio.mp3";
+import his1 from "../../audio/HistoryBookAudio/his-1.mp3";
+import his2 from "../../audio/HistoryBookAudio/his-2.mp3";
+import his3 from "../../audio/HistoryBookAudio/his-3.mp3";
+import his4 from "../../audio/HistoryBookAudio/his-4.mp3";
+import his5 from "../../audio/HistoryBookAudio/his-5.mp3";
+import his6 from "../../audio/HistoryBookAudio/his-6.mp3";
+import his7 from "../../audio/HistoryBookAudio/his-7.mp3";
+import his8 from "../../audio/HistoryBookAudio/his-8.mp3";
+import his9 from "../../audio/HistoryBookAudio/his-9.mp3";
+import his10 from "../../audio/HistoryBookAudio/his-10.mp3";
 
 const History = () => {
   const [pages, setPages] = useState();
   const [page, setPage] = useState();
+  const pageAudios = [
+    his1,
+    his2,
+    his3,
+    his4,
+    his5,
+    his6,
+    his7,
+    his8,
+    his9,
+    his10,
+  ];
   const [nextPlay, { stop: nextStop }] = useSound(nextPageAudio);
   const [prevPlay, { stop: prevStop }] = useSound(prevPageAudio);
+  const [pagePlay, { stop: pageStop }] = useSound(pageAudios[page - 1]);
 
   const onDocumentComplete = (pages) => {
     setPage(1);
@@ -65,12 +88,18 @@ const History = () => {
         <span className="font-bold">History</span> - Page{" "}
         <span className="">{page}</span> of <span className="">{pages}</span>
       </div>
-      <PDF
-        className="border-2 border-blue-400 shadow-lg rounded-lg"
-        file={historyPdf}
-        page={page}
-        onDocumentComplete={onDocumentComplete}
-      />
+      <div
+        style={{ height: "793px", width: "595px", margin: "0 auto" }}
+        onMouseOver={() => pagePlay()}
+        onMouseOut={() => pageStop()}
+      >
+        <PDF
+          className="border-2 border-blue-400 shadow-lg rounded-lg"
+          file={historyPdf}
+          page={page}
+          onDocumentComplete={onDocumentComplete}
+        />
+      </div>
       {pagination}
     </div>
   );
