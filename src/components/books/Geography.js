@@ -4,6 +4,7 @@ import PDF from "react-pdf-js";
 
 import geographyPdf from "./geography-1-20.pdf";
 
+import geographyAudio from "../../audio/BooksAudio/geographyAudio.mp3";
 import nextPageAudio from "../../audio/BooksAudio/nextPageAudio.mp3";
 import prevPageAudio from "../../audio/BooksAudio/prevPageAudio.mp3";
 import geog1 from "../../audio/GeographyBookAudio/geo-1.mp3";
@@ -54,6 +55,7 @@ const Geography = () => {
     geog19,
     geog20,
   ];
+  const [geographyPlay, { stop: geographyStop }] = useSound(geographyAudio);
   const [pagePlay, { stop: pageStop }] = useSound(pageAudios[page - 1]);
 
   const onDocumentComplete = (pages) => {
@@ -105,8 +107,15 @@ const Geography = () => {
   return (
     <div>
       <div className="text-center mb-1">
-        <span className="font-bold">Geography</span> - Page{" "}
-        <span className="">{page}</span> of <span className="">{pages}</span>
+        <span
+          className="font-bold"
+          onMouseEnter={() => geographyPlay()}
+          onMouseLeave={() => geographyStop()}
+        >
+          Geography
+        </span>{" "}
+        - Page <span className="">{page}</span> of{" "}
+        <span className="">{pages}</span>
       </div>
       <div
         style={{ height: "793px", width: "595px", margin: "0 auto" }}

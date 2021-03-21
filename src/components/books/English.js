@@ -4,6 +4,7 @@ import PDF from "react-pdf-js";
 
 import englishPdf from "./english-1-20.pdf";
 
+import englishAudio from "../../audio/BooksAudio/englishAudio.mp3";
 import nextPageAudio from "../../audio/BooksAudio/nextPageAudio.mp3";
 import prevPageAudio from "../../audio/BooksAudio/prevPageAudio.mp3";
 import eng1 from "../../audio/EnglishBookAudio/eng-1.mp3";
@@ -52,6 +53,7 @@ const English = () => {
     eng19,
     eng20,
   ];
+  const [englishPlay, { stop: englishStop }] = useSound(englishAudio);
   const [nextPlay, { stop: nextStop }] = useSound(nextPageAudio);
   const [prevPlay, { stop: prevStop }] = useSound(prevPageAudio);
   const [pagePlay, { stop: pageStop }] = useSound(pageAudios[page - 1]);
@@ -105,8 +107,15 @@ const English = () => {
   return (
     <div>
       <div className="text-center mb-1">
-        <span className="font-bold">English</span> - Page{" "}
-        <span className="">{page}</span> of <span className="">{pages}</span>
+        <span
+          className="font-bold"
+          onMouseEnter={() => englishPlay()}
+          onMouseLeave={() => englishStop()}
+        >
+          English
+        </span>{" "}
+        - Page <span className="">{page}</span> of{" "}
+        <span className="">{pages}</span>
       </div>
       <div
         style={{ height: "793px", width: "595px", margin: "0 auto" }}

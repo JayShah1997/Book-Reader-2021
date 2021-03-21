@@ -4,6 +4,7 @@ import PDF from "react-pdf-js";
 
 import historyPdf from "./history-1-10.pdf";
 
+import historyAudio from "../../audio/BooksAudio/historyAudio.mp3";
 import nextPageAudio from "../../audio/BooksAudio/nextPageAudio.mp3";
 import prevPageAudio from "../../audio/BooksAudio/prevPageAudio.mp3";
 import his1 from "../../audio/HistoryBookAudio/his-1.mp3";
@@ -32,6 +33,7 @@ const History = () => {
     his9,
     his10,
   ];
+  const [historyPlay, { stop: historyStop }] = useSound(historyAudio);
   const [nextPlay, { stop: nextStop }] = useSound(nextPageAudio);
   const [prevPlay, { stop: prevStop }] = useSound(prevPageAudio);
   const [pagePlay, { stop: pageStop }] = useSound(pageAudios[page - 1]);
@@ -85,8 +87,15 @@ const History = () => {
   return (
     <div>
       <div className="text-center mb-1">
-        <span className="font-bold">History</span> - Page{" "}
-        <span className="">{page}</span> of <span className="">{pages}</span>
+        <span
+          className="font-bold"
+          onMouseEnter={() => historyPlay()}
+          onMouseLeave={() => historyStop()}
+        >
+          History
+        </span>{" "}
+        - Page <span className="">{page}</span> of{" "}
+        <span className="">{pages}</span>
       </div>
       <div
         style={{ height: "793px", width: "595px", margin: "0 auto" }}
