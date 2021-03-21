@@ -7,6 +7,8 @@ import Footer from "./components/Footer";
 import Books from "./pages/Books";
 import NotFound from "./components/NotFound";
 import English from "./components/books/English";
+import History from "./components/books/History";
+import Geography from "./components/books/Geography";
 
 const App = () => {
   return (
@@ -19,6 +21,8 @@ const App = () => {
               <Route exact path="/" component={Home} />
               <Route exact path="/books" component={Books} />
               <Route exact path="/books/english" component={English} />
+              <Route exact path="/books/history" component={History} />
+              <Route exact path="/books/geography" component={Geography} />
               <Route exact path="*" component={NotFound} />
             </Switch>
           </main>

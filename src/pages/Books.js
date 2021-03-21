@@ -33,12 +33,12 @@ const Books = () => {
           <p className="text-xl">
             Those who forget the past are condemn to repeat it
           </p>
-          <a
-            href="/"
+          <Link
+            to="/books/history"
             class="relative inline-block my-8 lg:mb-8 py-3 px-8 rounded bg-gradient-to-br from-purple-500 to-purple-700 text-purple-100 hover:text-white hover:to-purple-600 shadow-lg hover:shadow-2xl font-bold text-lg tracking-wide transition duration-500"
           >
             Read Book
-          </a>
+          </Link>
         </div>
         <div className="text-center w-1/3 bg-white p-6 rounded shadow-lg pt-16 pb-16 px-1  transform  hover:-translate-y-4 hover:shadow-xl transition duration-500 border-t-8  border-green-700">
           <i class="text-transparent bg-clip-text bg-gradient-to-r from-green-600  to-blue-600  fas fa-globe text-6xl mb-8"></i>
@@ -48,12 +48,12 @@ const Books = () => {
           <p className="text-xl">
             Exploring the unexplored, an unknown journey
           </p>
-          <a
-            href="/"
+          <Link
+            to="/books/geography"
             class="relative inline-block my-8 lg:mb-8 py-3 px-8 rounded bg-gradient-to-br from-purple-500 to-purple-700 text-purple-100 hover:text-white hover:to-purple-600 shadow-lg hover:shadow-2xl font-bold text-lg tracking-wide transition duration-500"
           >
             Read Book
-          </a>
+          </Link>
         </div>
       </div>
     </div>
