@@ -7,4 +7,8 @@
     margin: 0 auto;
     height: 725px;
   }
+
+  button:disabled {
+    cursor: not-allowed;
+  }
 }
