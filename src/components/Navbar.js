@@ -55,11 +55,11 @@ const Navbar = () => {
         </li>
         <li className="hover:text-blue-600 transition duration-300">
           <Link
-            to="/upload-books"
-            onMouseEnter={() => uploadPlay()}
-            onMouseLeave={() => uploadStop()}
+            to="/news"
+            // onMouseEnter={() => uploadPlay()}
+            // onMouseLeave={() => uploadStop()}
           >
-            Upload
+            News
           </Link>
         </li>
         <li className="hover:text-blue-600 transition duration-300">

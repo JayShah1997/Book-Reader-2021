@@ -9,6 +9,7 @@ import NotFound from "./components/NotFound";
 import English from "./components/books/English";
 import History from "./components/books/History";
 import Geography from "./components/books/Geography";
+import News from "./pages/News";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
           <main>
             <Switch>
               <Route exact path="/" component={Home} />
+              <Route exact path="/news" component={News} />
               <Route exact path="/books" component={Books} />
               <Route exact path="/books/english" component={English} />
               <Route exact path="/books/history" component={History} />
