@@ -10,6 +10,7 @@ import English from "./components/books/English";
 import History from "./components/books/History";
 import Geography from "./components/books/Geography";
 import News from "./pages/News";
+import About from "./pages/About";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/news" component={News} />
+              <Route exact path="/about" component={About} />
               <Route exact path="/books" component={Books} />
               <Route exact path="/books/english" component={English} />
               <Route exact path="/books/history" component={History} />
