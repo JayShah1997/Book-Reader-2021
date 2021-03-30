@@ -1,19 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import useSound from "use-sound";
+// import useSound from "use-sound";
 
-import bookReaderAudio from "../audio/NavbarAudio/book-reader.mp3";
-import homeAudio from "../audio/NavbarAudio/home.mp3";
-import booksAudio from "../audio/NavbarAudio/books.mp3";
-import uploadAudio from "../audio/NavbarAudio/upload.mp3";
-import aboutAudio from "../audio/NavbarAudio/about.mp3";
+// import bookReaderAudio from "../audio/NavbarAudio/book-reader.mp3";
+// import homeAudio from "../audio/NavbarAudio/home.mp3";
+// import booksAudio from "../audio/NavbarAudio/books.mp3";
+// import uploadAudio from "../audio/NavbarAudio/upload.mp3";
+// import aboutAudio from "../audio/NavbarAudio/about.mp3";
+
+const responsiveVoice = window.responsiveVoice;
 
 const Navbar = () => {
-  const [bookReaderPlay, { stop: bookReaderStop }] = useSound(bookReaderAudio);
-  const [homePlay, { stop: homeStop }] = useSound(homeAudio);
-  const [booksPlay, { stop: booksStop }] = useSound(booksAudio);
-  const [uploadPlay, { stop: uploadStop }] = useSound(uploadAudio);
-  const [aboutPlay, { stop: aboutStop }] = useSound(aboutAudio);
+  // const [bookReaderPlay, { stop: bookReaderStop }] = useSound(bookReaderAudio);
+  // const [homePlay, { stop: homeStop }] = useSound(homeAudio);
+  // const [booksPlay, { stop: booksStop }] = useSound(booksAudio);
+  // const [uploadPlay, { stop: uploadStop }] = useSound(uploadAudio);
+  // const [aboutPlay, { stop: aboutStop }] = useSound(aboutAudio);
 
   return (
     <div className="flex justify-between items-center mt-2">
@@ -27,8 +29,8 @@ const Navbar = () => {
         <Link
           to="/"
           className="inline-block text-3xl mr-2 font-bold  text-transparent bg-clip-text bg-gradient-to-r from-purple-500  to-green-500"
-          onMouseEnter={() => bookReaderPlay()}
-          onMouseLeave={() => bookReaderStop()}
+          onMouseEnter={() => responsiveVoice.speak("Book Reader")}
+          onMouseLeave={() => responsiveVoice.cancel()}
         >
           <i class="fas fa-book"></i> Book Reader
         </Link>
@@ -38,8 +40,8 @@ const Navbar = () => {
         <li className="hover:text-blue-600  transition duration-300 ">
           <Link
             to="/"
-            onMouseEnter={() => homePlay()}
-            onMouseLeave={() => homeStop()}
+            onMouseEnter={() => responsiveVoice.speak("Home")}
+            onMouseLeave={() => responsiveVoice.cancel()}
           >
             Home
           </Link>
@@ -47,26 +49,26 @@ const Navbar = () => {
         <li className="hover:text-blue-600 transition duration-300">
           <Link
             to="/books"
-            onMouseEnter={() => booksPlay()}
-            onMouseLeave={() => booksStop()}
+            onMouseEnter={() => responsiveVoice.speak("Books")}
+            onMouseLeave={() => responsiveVoice.cancel()}
           >
             Books
           </Link>
         </li>
         <li className="hover:text-blue-600 transition duration-300">
           <Link
-            to="/upload-books"
-            onMouseEnter={() => uploadPlay()}
-            onMouseLeave={() => uploadStop()}
+            to="/news"
+            onMouseEnter={() => responsiveVoice.speak("News")}
+            onMouseLeave={() => responsiveVoice.cancel()}
           >
-            Upload
+            News
           </Link>
         </li>
         <li className="hover:text-blue-600 transition duration-300">
           <Link
             to="/about"
-            onMouseEnter={() => aboutPlay()}
-            onMouseLeave={() => aboutStop()}
+            onMouseEnter={() => responsiveVoice.speak("About")}
+            onMouseLeave={() => responsiveVoice.cancel()}
           >
             About
           </Link>
