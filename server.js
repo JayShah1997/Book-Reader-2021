@@ -12,13 +12,13 @@ app.post(`/upload`, (req, res) => {
   }
 
   const file = req.files.file;
-  file.mv(`${__dirname}/client/public/uploads/${file.name}`, (err) => {
+  file.mv(`${__dirname}/client/src/uploads/uploadedFile`, (err) => {
     if (err) {
       console.error(error.message);
       return res.status(500).send(error.message);
     }
 
-    res.json({ fileName: file.name, filePath: `/uploads/${file.name}` });
+    res.json({ fileName: file.name, filePath: `/uploads/uploadedFile` });
   });
 });
 
