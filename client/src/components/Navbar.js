@@ -57,6 +57,15 @@ const Navbar = () => {
         </li>
         <li className="hover:text-blue-600 transition duration-300">
           <Link
+            to="/file-upload"
+            onMouseEnter={() => responsiveVoice.speak("File Upload")}
+            onMouseLeave={() => responsiveVoice.cancel()}
+          >
+            File Upload
+          </Link>
+        </li>
+        <li className="hover:text-blue-600 transition duration-300">
+          <Link
             to="/news"
             onMouseEnter={() => responsiveVoice.speak("News")}
             onMouseLeave={() => responsiveVoice.cancel()}

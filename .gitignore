@@ -46,6 +46,7 @@ packages/react-devtools-scheduling-profiler/dist
 
 # dependencies
 /node_modules
+node_modules
 /bower_components
 
 # misc
