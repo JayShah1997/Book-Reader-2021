@@ -5,15 +5,27 @@ import PDF from "react-pdf-js";
 import axios from "axios";
 import uploadedPdfFile from "./../uploads/uploadedFile.pdf";
 
+const responsiveVoice = window.responsiveVoice;
+
 const FileUpload = () => {
   const [file, setFile] = useState("");
   const [filename, setFilename] = useState("Choose File");
   const [uploadedFile, setUploadedFile] = useState({});
   const [message, setMessage] = useState("");
   const [uploadPercentage, setUploadPercentage] = useState(0);
+  const [extractedText, setExtractedText] = useState("");
 
   const [pages, setPages] = useState();
   const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    async function fetchUploadedText() {
+      const res = await axios.get(`/get-upload`);
+      setExtractedText(res.data.uploadedText.text);
+      // console.log(res.data.uploadedText.text);
+    }
+    fetchUploadedText();
+  });
 
   const onDocumentComplete = (pages) => {
     setPage(1);
@@ -33,7 +45,7 @@ const FileUpload = () => {
     setMessage(null);
     // setFilename(null);
     setUploadPercentage(0);
-  }
+  };
 
   const renderPagination = () => {
     return (
@@ -61,7 +73,7 @@ const FileUpload = () => {
           className="focus:outline-none bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded-r transition-all duration-300 ease-out"
           onClick={clearFile}
         >
-           Clear File <i class="ml-1 fa fa-trash" aria-hidden="true"></i>
+          Clear File <i class="ml-1 fa fa-trash" aria-hidden="true"></i>
         </button>
       </div>
     );
@@ -119,7 +131,11 @@ const FileUpload = () => {
           <span className="">Uploaded File</span> - Page{" "}
           <span className="">{page}</span> of <span className="">{pages}</span>
         </div>
-        <div style={{ height: "730px", width: "595px", margin: "0 auto" }}>
+        <div
+          style={{ height: "730px", width: "595px", margin: "0 auto" }}
+          onMouseEnter={() => responsiveVoice.speak(extractedText)}
+          onMouseLeave={() => responsiveVoice.cancel()}
+        >
           <PDF
             className="border-2 border-blue-400 shadow-lg rounded-lg"
             file={uploadedPdfFile}
@@ -132,7 +148,10 @@ const FileUpload = () => {
     );
   } else {
     return (
-      <div className="flex flex-col justify-center items-center" style={{ height: "80vh" }}>
+      <div
+        className="flex flex-col justify-center items-center"
+        style={{ height: "80vh" }}
+      >
         <h2 className="text-4xl mb-4 text-center">Upload File</h2>
         {message ? <Message msg={message} /> : null}
         <form onSubmit={onSubmit}>

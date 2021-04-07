@@ -22,7 +22,9 @@
   "homepage": "https://github.com/vin18/Book-Reader-2021#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "express-fileupload": "^1.2.1"
+    "express-fileupload": "^1.2.1",
+    "pdf-parse": "^1.1.1",
+    "pdf.js-extract": "^0.1.5"
   },
   "devDependencies": {
     "concurrently": "^6.0.1",
