@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import useSound from "use-sound";
 import PDF from "react-pdf-js";
 

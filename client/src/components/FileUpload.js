@@ -1,6 +1,5 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Message from "./Message";
-import Progress from "./Progress";
 import PDF from "react-pdf-js";
 import axios from "axios";
 import uploadedPdfFile from "./../uploads/uploadedFile.pdf";
@@ -14,6 +13,7 @@ const FileUpload = () => {
   const [message, setMessage] = useState("");
   const [uploadPercentage, setUploadPercentage] = useState(0);
   const [extractedText, setExtractedText] = useState("");
+  const [initial, setInitial] = useState("");
 
   const [pages, setPages] = useState();
   const [page, setPage] = useState(1);
@@ -50,7 +50,7 @@ const FileUpload = () => {
   const renderPagination = () => {
     return (
       <div className="text-center mt-4">
-        <button
+        {/* <button
           disabled={page === 1}
           className="mr-4 focus:outline-none bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded-l transition-all duration-300 ease-out"
           onClick={handlePrevious}
@@ -66,7 +66,7 @@ const FileUpload = () => {
         >
           {" "}
           <i class="fas fa-arrow-circle-right"></i> Next
-        </button>
+        </button> */}
 
         <button
           disabled={!uploadedFile}
@@ -127,9 +127,10 @@ const FileUpload = () => {
   if (uploadedFile) {
     return (
       <div>
-        <div className="text-center mb-1">
-          <span className="">Uploaded File</span> - Page{" "}
-          <span className="">{page}</span> of <span className="">{pages}</span>
+        <div className="text-center text-2xl mb-1">
+          {/* <span className="">Uploaded File</span> - Page{" "}
+          <span className="">{page}</span> of <span className="">{pages}</span> */}
+          Uploaded File
         </div>
         <div
           style={{ height: "730px", width: "595px", margin: "0 auto" }}
