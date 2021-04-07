@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import Message from "./Message";
 import Progress from "./Progress";
 import PDF from "react-pdf-js";
@@ -28,6 +28,13 @@ const FileUpload = () => {
     setPage((prevPage) => prevPage + 1);
   };
 
+  const clearFile = () => {
+    setUploadedFile(null);
+    setMessage(null);
+    // setFilename(null);
+    setUploadPercentage(0);
+  }
+
   const renderPagination = () => {
     return (
       <div className="text-center mt-4">
@@ -39,13 +46,22 @@ const FileUpload = () => {
           {" "}
           <i class="fas fa-arrow-circle-left"></i> Prev
         </button>
+
         <button
           disabled={page === pages}
-          className="focus:outline-none bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded-r transition-all duration-300 ease-out"
+          className="mr-4 focus:outline-none bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded-r transition-all duration-300 ease-out"
           onClick={handleNext}
         >
           {" "}
           <i class="fas fa-arrow-circle-right"></i> Next
+        </button>
+
+        <button
+          disabled={!uploadedFile}
+          className="focus:outline-none bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-2 px-4 rounded-r transition-all duration-300 ease-out"
+          onClick={clearFile}
+        >
+           Clear File <i class="ml-1 fa fa-trash" aria-hidden="true"></i>
         </button>
       </div>
     );
@@ -116,7 +132,8 @@ const FileUpload = () => {
     );
   } else {
     return (
-      <Fragment>
+      <div className="flex flex-col justify-center items-center" style={{ height: "80vh" }}>
+        <h2 className="text-4xl mb-4 text-center">Upload File</h2>
         {message ? <Message msg={message} /> : null}
         <form onSubmit={onSubmit}>
           <div className="custom-file mb-4">
@@ -127,17 +144,17 @@ const FileUpload = () => {
               onChange={onChange}
             />
             <label className="custom-file-label" htmlFor="customFile">
-              {filename}
+              {filename.slice(0, 25)}
             </label>
           </div>
-          <Progress percentage={uploadPercentage} />
+          {/* <Progress percentage={uploadPercentage} /> */}
           <input
             type="submit"
-            value="Upload"
-            className="btn btn-primary btn-block mt-4"
+            value="Upload File"
+            className="btn btn-primary btn-block"
           />
         </form>
-      </Fragment>
+      </div>
     );
   }
 };
