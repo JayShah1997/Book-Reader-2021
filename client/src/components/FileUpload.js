@@ -153,7 +153,13 @@ const FileUpload = () => {
         className="flex flex-col justify-center items-center"
         style={{ height: "80vh" }}
       >
-        <h2 className="text-4xl mb-4 text-center">Upload File</h2>
+        <h2
+          className="text-4xl mb-4 text-center"
+          onMouseEnter={() => responsiveVoice.speak("Upload File")}
+          onMouseLeave={() => responsiveVoice.cancel()}
+        >
+          Upload File
+        </h2>
         {message ? <Message msg={message} /> : null}
         <form onSubmit={onSubmit}>
           <div className="custom-file mb-4">
@@ -172,6 +178,8 @@ const FileUpload = () => {
             type="submit"
             value="Upload File"
             className="btn btn-primary btn-block"
+            onMouseEnter={() => responsiveVoice.speak("Upload File")}
+            onMouseLeave={() => responsiveVoice.cancel()}
           />
         </form>
       </div>
