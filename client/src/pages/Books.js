@@ -11,6 +11,8 @@ import englishTitleAudio from "../audio/BooksAudio/englishTitleAudio.mp3";
 import historyTitleAudio from "../audio/BooksAudio/historyTitleAudio.mp3";
 import geographyTitleAudio from "../audio/BooksAudio/geographyTitleAudio.mp3";
 
+const responsiveVoice = window.responsiveVoice;
+
 const Books = () => {
   const [titlePlay, { stop: titleStop }] = useSound(titleAudio);
   const [ctaPlay, { stop: ctaStop }] = useSound(ctaAudio);
@@ -114,6 +116,34 @@ const Books = () => {
             Read Book
           </Link>
         </div>
+      </div>
+
+      <div className="text-center mx-auto my-5 w-1/3 bg-white p-6 rounded shadow-lg pt-16 pb-16 px-1  transform  hover:-translate-y-4 hover:shadow-xl transition duration-500 border-t-8  border-green-700">
+        <i class="text-transparent bg-clip-text bg-gradient-to-r from-green-600  to-blue-600  fas fa-file-upload text-6xl mb-8"></i>
+        <h3
+          className="text-4xl uppercase mb-6 text-gray-900 font-bold tracking-wide"
+          onMouseEnter={() => responsiveVoice.speak("Uploaded File")}
+          onMouseLeave={() => responsiveVoice.cancel()}
+        >
+          Uploaded File
+        </h3>
+        <p
+          className="text-xl"
+          onMouseEnter={() =>
+            responsiveVoice.speak("Listen to your uploaded file!")
+          }
+          onMouseLeave={() => responsiveVoice.cancel()}
+        >
+          Listen to your uploaded file!
+        </p>
+        <Link
+          to="/file-upload"
+          class="relative inline-block my-8 lg:mb-8 py-3 px-8 rounded bg-gradient-to-br from-purple-500 to-purple-700 text-purple-100 hover:text-white hover:to-purple-600 shadow-lg hover:shadow-2xl font-bold text-lg tracking-wide transition duration-500"
+          onMouseEnter={() => responsiveVoice.speak("Uploaded File")}
+          onMouseLeave={() => responsiveVoice.cancel()}
+        >
+          Uploaded File
+        </Link>
       </div>
     </div>
   );
