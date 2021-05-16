@@ -23,8 +23,11 @@
   "dependencies": {
     "express": "^4.17.1",
     "express-fileupload": "^1.2.1",
+    "install": "^0.13.0",
+    "npm": "^7.13.0",
     "pdf-parse": "^1.1.1",
-    "pdf.js-extract": "^0.1.5"
+    "pdf.js-extract": "^0.1.5",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "concurrently": "^6.0.1",

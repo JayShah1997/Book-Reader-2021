@@ -1,6 +1,8 @@
+const fs = require("fs");
 const express = require("express");
 const fileUpload = require("express-fileupload");
 const pdfParse = require("pdf-parse");
+const { v4: uuidv4 } = require("uuid");
 
 const app = express();
 
@@ -13,20 +15,37 @@ app.post(`/upload`, (req, res) => {
   }
 
   const file = req.files.file;
-  file.mv(`${__dirname}/client/src/uploads/uploadedFile.pdf`, (err) => {
-    if (err) {
-      console.error(error.message);
-      return res.status(500).send(error.message);
+  const uploadedFileId = uuidv4();
+
+  file.mv(
+    `${__dirname}/client/src/uploads/uploadedFile-${uploadedFileId}.pdf`,
+    (err) => {
+      if (err) {
+        console.error(error.message);
+        return res.status(500).send(error.message);
+      }
+      res.json({
+        fileName: `${uploadedFileId}`,
+        filePath: `./../uploads/uploadedFile-${uploadedFileId}.pdf`,
+      });
     }
-    res.json({ fileName: file.name, filePath: `/uploads/uploadedFile.pdf` });
+  );
+});
+
+app.get("/get-upload", (req, res) => {
+  pdfParse(`${__dirname}/client/src/uploads/uploadedFile.pdf`).then(function (
+    data
+  ) {
+    return res.status(200).json({ uploadedText: data });
   });
 });
 
-app.get('/get-upload', (req, res) => {
-  pdfParse(`${__dirname}/client/src/uploads/uploadedFile.pdf`).then(function (data) {
-    return res.status(200).json({ uploadedText: data })
-  })
-})
+app.get("/numoffiles", (req, res) => {
+  fs.readdir("./client/src/uploads", (err, files) => {
+    console.log(files.length);
+    return res.status(200).json({ numOfFiles: files.length });
+  });
+});
 
 app.listen(5000, () => {
   console.log(`Server started!`);
