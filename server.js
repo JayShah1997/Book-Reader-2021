@@ -30,6 +30,17 @@ app.post(`/upload`, (req, res) => {
       });
     }
   );
+
+  const fileData = JSON.parse(
+    fs.readFileSync(`${__dirname}/client/src/data/fileData.json`)
+  );
+  fileData.push({
+    id: uploadedFileId,
+  });
+  fs.writeFileSync(
+    `${__dirname}/client/src/data/fileData.json`,
+    JSON.stringify(fileData, null, 2)
+  );
 });
 
 app.get("/get-upload", (req, res) => {

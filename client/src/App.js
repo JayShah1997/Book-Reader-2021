@@ -12,6 +12,7 @@ import Geography from "./components/books/Geography";
 import News from "./pages/News";
 import About from "./pages/About";
 import FileUpload from "./components/FileUpload";
+import UploadedFile from "./pages/UploadedFile";
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
               <Route exact path="/news" component={News} />
               <Route exact path="/about" component={About} />
               <Route exact path="/file-upload" component={FileUpload} />
+              <Route exact path="/file/:fileId" component={UploadedFile} />
               <Route exact path="/books" component={Books} />
               <Route exact path="/books/english" component={English} />
               <Route exact path="/books/history" component={History} />

@@ -6,7 +6,7 @@ import uploadedPdfFile from "./../uploads/uploadedFile.pdf";
 
 const responsiveVoice = window.responsiveVoice;
 
-const FileUpload = () => {
+const FileUpload = ({ history }) => {
   const [file, setFile] = useState("");
   const [filename, setFilename] = useState("Choose File");
   const [uploadedFile, setUploadedFile] = useState({});
@@ -114,6 +114,8 @@ const FileUpload = () => {
         fileName,
         filePath,
       });
+      history.push(`/file/${fileName}`);
+      // history.push(`/file/04219879-bdff-4d21-b21a-5bdf1037b87a`);
       setMessage("File Uploaded");
     } catch (err) {
       if (err.response.status === 500) {
@@ -124,67 +126,42 @@ const FileUpload = () => {
     }
   };
 
-  if (uploadedFile) {
-    return (
-      <div>
-        <div className="text-center text-2xl mb-1">
-          {/* <span className="">Uploaded File</span> - Page{" "}
-          <span className="">{page}</span> of <span className="">{pages}</span> */}
-          Uploaded File
-        </div>
-        <div
-          style={{ height: "730px", width: "595px", margin: "0 auto" }}
-          onMouseEnter={() => responsiveVoice.speak(extractedText)}
-          onMouseLeave={() => responsiveVoice.cancel()}
-        >
-          <PDF
-            className="border-2 border-blue-400 shadow-lg rounded-lg"
-            file={uploadedPdfFile}
-            page={page}
-            onDocumentComplete={onDocumentComplete}
-          />
-        </div>
-        {pagination}
-      </div>
-    );
-  } else {
-    return (
-      <div
-        className="flex flex-col justify-center items-center"
-        style={{ height: "80vh" }}
+  return (
+    <div
+      className="flex flex-col justify-center items-center"
+      style={{ height: "80vh" }}
+    >
+      <h2
+        className="text-4xl mb-4 text-center"
+        onMouseEnter={() => responsiveVoice.speak("Upload File")}
+        onMouseLeave={() => responsiveVoice.cancel()}
       >
-        <h2
-          className="text-4xl mb-4 text-center"
+        Upload File
+      </h2>
+      {message ? <Message msg={message} /> : null}
+      <form onSubmit={onSubmit}>
+        <div className="custom-file mb-4">
+          <input
+            type="file"
+            className="custom-file-input"
+            id="customFile"
+            onChange={onChange}
+          />
+          <label className="custom-file-label" htmlFor="customFile">
+            {filename.slice(0, 25)}
+          </label>
+        </div>
+        {/* <Progress percentage={uploadPercentage} /> */}
+        <input
+          type="submit"
+          value="Upload File"
+          className="btn btn-primary btn-block"
           onMouseEnter={() => responsiveVoice.speak("Upload File")}
           onMouseLeave={() => responsiveVoice.cancel()}
-        >
-          Upload File
-        </h2>
-        {message ? <Message msg={message} /> : null}
-        <form onSubmit={onSubmit}>
-          <div className="custom-file mb-4">
-            <input
-              type="file"
-              className="custom-file-input"
-              id="customFile"
-              onChange={onChange}
-            />
-            <label className="custom-file-label" htmlFor="customFile">
-              {filename.slice(0, 25)}
-            </label>
-          </div>
-          {/* <Progress percentage={uploadPercentage} /> */}
-          <input
-            type="submit"
-            value="Upload File"
-            className="btn btn-primary btn-block"
-            onMouseEnter={() => responsiveVoice.speak("Upload File")}
-            onMouseLeave={() => responsiveVoice.cancel()}
-          />
-        </form>
-      </div>
-    );
-  }
+        />
+      </form>
+    </div>
+  );
 };
 
 export default FileUpload;
