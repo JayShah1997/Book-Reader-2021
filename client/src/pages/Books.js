@@ -134,8 +134,14 @@ const Books = () => {
         <i class="fas fa-book"></i> Uploaded Files
       </h1>
 
-      {numOfUploadedFiles === 0 ? (
-        <p className="text-center text-3xl mb-24">No pages uploaded yet!</p>
+      {filesData.length === 0 ? (
+        <p
+          className="text-center text-3xl mb-24"
+          onMouseEnter={() => responsiveVoice.speak("No pages uploaded yet!")}
+          onMouseLeave={() => responsiveVoice.cancel()}
+        >
+          No pages uploaded yet!
+        </p>
       ) : (
         <div className="grid grid-cols-3 gap-8">
           {filesData.map((fileData, x) => (

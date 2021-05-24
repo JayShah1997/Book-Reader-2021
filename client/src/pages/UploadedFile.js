@@ -36,7 +36,13 @@ const UploadedFile = ({ match }) => {
   if (fetchedFile) {
     return (
       <div>
-        <div className="text-center text-2xl mb-1">Uploaded File</div>
+        <div
+          className="text-center text-2xl mb-1"
+          onMouseEnter={() => responsiveVoice.speak("Uploaded File")}
+          onMouseLeave={() => responsiveVoice.cancel()}
+        >
+          Uploaded File
+        </div>
         <div
           style={{ height: "730px", width: "595px", margin: "0 auto" }}
           onMouseEnter={() => responsiveVoice.speak(extractedText)}
