@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Message from "./Message";
 import PDF from "react-pdf-js";
 import axios from "axios";
-import uploadedPdfFile from "./../uploads/uploadedFile.pdf";
 
 const responsiveVoice = window.responsiveVoice;
 

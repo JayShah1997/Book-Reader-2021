@@ -20,7 +20,7 @@ const UploadedFile = ({ match }) => {
       }
     }
     fetchFile();
-  }, []);
+  });
 
   useEffect(() => {
     async function fetchUploadedText() {
