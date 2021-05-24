@@ -51,6 +51,14 @@ app.get("/get-upload", (req, res) => {
   });
 });
 
+app.get("/get-upload/:fileId", (req, res) => {
+  pdfParse(
+    `${__dirname}/client/src/uploads/uploadedFile-${req.params.fileId}.pdf`
+  ).then(function (data) {
+    return res.status(200).json({ uploadedText: data });
+  });
+});
+
 app.get("/numoffiles", (req, res) => {
   fs.readdir("./client/src/uploads", (err, files) => {
     console.log(files.length);
